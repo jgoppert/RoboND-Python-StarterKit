@@ -37,4 +37,28 @@ source /opt/ros/kinetic/setup.bash
 unset PYTHONPATH
 ```
 
+## Recommended ROS Approach
+
+Another way to do it if you prefer to leave your ROS environment intact is to create a shell script and stick it in ~/bin:
+Make sure when you first install anaconda and it asks you if you want to add it to your path on install you click **NO**.
+If you made this mistake then go ahead and delete references to anaconda from your ~/.profile and ~/.bashrc.
+
+###Summary:
+
+1. Install anaconda and choose not to add it to your path
+2. Create a script named: ~/bin/RoboND, with the following contents:
+	```
+	#!/bin/bash
+	unset PYTHONPATH
+	export PATH=$HOME/anaconda3/bin:$PATH
+	source activate RoboND
+	```
+3. Login out and log back in to trigger the ~/bin path to be automatically to your PATH variable.
+	Then you can run:
+	```
+	. RoboND
+	```
+	anywhere on your system and it just works.
+
+
 See [this post](https://stackoverflow.com/questions/43019951/after-install-ros-kinetic-cannot-import-opencv) and [this post](https://stackoverflow.com/questions/17386880/does-anaconda-create-a-separate-pythonpath-variable-for-each-new-environment) for more information on the matter.  
